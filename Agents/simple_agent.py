@@ -42,7 +42,7 @@ class SimpleAgent(base_agent.BaseAgent):
     army_selected = False
     army_rallied = False
 
-    def transformLocation(self, x, x_distance, y, y_distance):
+    def transform_location(self, x, x_distance, y, y_distance):
         if not self.base_top_left:
             return [x - x_distance, y - y_distance]
 
@@ -71,7 +71,7 @@ class SimpleAgent(base_agent.BaseAgent):
                 unit_type = obs.observation["screen"][_UNIT_TYPE]
                 unit_y, unit_x = (unit_type == _TERRAN_COMMANDCENTER).nonzero()
 
-                target = self.transformLocation(int(unit_x.mean()), 0, int(unit_y.mean()), 20)
+                target = self.transform_location(int(unit_x.mean()), 0, int(unit_y.mean()), 20)
 
                 self.supply_depot_built = True
 
@@ -81,7 +81,7 @@ class SimpleAgent(base_agent.BaseAgent):
                 unit_type = obs.observation["screen"][_UNIT_TYPE]
                 unit_y, unit_x = (unit_type == _TERRAN_COMMANDCENTER).nonzero()
 
-                target = self.transformLocation(int(unit_x.mean()), 20, int(unit_y.mean()), 0)
+                target = self.transform_location(int(unit_x.mean()), 20, int(unit_y.mean()), 0)
 
                 self.barracks_built = True
 
